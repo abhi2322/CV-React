@@ -6,11 +6,29 @@ class App extends Component{
   constructor(){
     super();
     this.state={
+      peronalDetails:{
+        firstName:"",
+        lastNAme:"",
+        phone:"",
+        gender:"",
+        email:"",
+        Description:"",
+      },
+      educationDetails:{
+        school:"",
+        Degree:"",
+        duration:"",
+      },
+      workExperiance:{
+        company:"",
+        Tile:"",
+        duration:"",
+        EndDate:""
+      },
       editMode:true
     }
   }
  edit=()=>{
-   
    this.setState({
      editMode:true
    })
@@ -19,12 +37,23 @@ class App extends Component{
     this.setState({
       editMode:false
     })
+    console.log(this.state.peronalDetails.firstName)
+  }
+  firstNameHanler(ev){
+    const personal=this.state.peronalDetails;
+    personal.firstName=ev.target.value;
+    this.setState({
+      peronalDetails:personal
+    })
   }
  
   render(){
     let mode=null
     if(this.state.editMode){
-      mode=<EditMode />
+      mode=<EditMode
+              firstNameHandler={(ev)=>{this.firstNameHanler(ev)}}
+      
+          />
     }else{
       mode=<PreviewMode />
     }
