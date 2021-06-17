@@ -17,12 +17,19 @@ class EditMode extends Component{
             descriptionHandler={(ev)=>{this.props.descriptionHandler(ev)}}
         />
         <h4>EducationDetails</h4>
-        <EducationDetails
-            educationDetails={this.props.educationDetails}
-            schoolHandler={(ev)=>{this.props.schoolHandler(ev)}}
-            degreeHandler={(ev)=>{this.props.degreeHandler(ev)}}
-            durationHandler={(ev)=>{this.props.durationHandler(ev)}}
-        />
+        <button onClick={this.props.educationHandler}>ADD</button>
+        {this.props.educationDetails.map((items)=>{
+            const id=items.id
+            return(
+                <EducationDetails 
+                key={id}
+                educationDetails={items}
+                schoolHandler={(ev)=>{this.props.schoolHandler(ev,id)}}
+                degreeHandler={(ev)=>{this.props.degreeHandler(ev,id)}}
+                durationHandler={(ev)=>{this.props.durationHandler(ev,id)}}
+                />
+            )
+        })}
         </div>
         
       )

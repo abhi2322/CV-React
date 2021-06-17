@@ -1,4 +1,5 @@
 function EducationDetails(props){
+    const id=props.educationDetails.id
     return(
         <div>
             <label>School/Intitution name</label>

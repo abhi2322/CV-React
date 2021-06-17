@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import EditMode from './components/edit_mode';
 import PreviewMode from './components/preview_mode';
+import uniqid from "uniqid";
 
 class App extends Component{
   constructor(){
@@ -8,17 +9,13 @@ class App extends Component{
     this.state={
       peronalDetails:{
         firstName:"",
-        lastNAme:"",
+        secondName:"",
         phone:"",
         gender:"",
         email:"",
         Description:"",
       },
-      educationDetails:{
-        school:"",
-        Degree:"",
-        duration:"",
-      },
+      educationDetails:[],
       workExperiance:{
         company:"",
         Tile:"",
@@ -82,33 +79,60 @@ class App extends Component{
       peronalDetails:personal
     })
   }
-  schoolHandler(ev){
+  schoolHandler(ev,id){
+    let len=this.state.educationDetails.length
     const education=this.state.educationDetails
-    education.school=ev.target.value;
+      for(let i=0;i<len;i++){
+        if(education[i].id===id){
+        education[i].school=ev.target.value;
+        this.setState({
+          educationDetails:education
+        })
+      }
+    }
+  }
+  degreeHandler(ev,id){
+    let len=this.state.educationDetails.length
+    const education=this.state.educationDetails
+      for(let i=0;i<len;i++){
+        if(education[i].id===id){
+        education[i].Degree=ev.target.value;
+        this.setState({
+          educationDetails:education
+        })
+      }
+    }
+  }
+  durationHandler(ev,id){
+    let len=this.state.educationDetails.length
+    const education=this.state.educationDetails
+      for(let i=0;i<len;i++){
+        if(education[i].id===id){
+        education[i].duration=ev.target.value;
+        this.setState({
+          educationDetails:education
+        })
+      }
+    }
+  }
+
+  educationHAndler(){
+    const education={
+      id:uniqid(),
+      school:"",
+      Degree:"",
+      duration:"",
+    }
     this.setState({
-      educationDetails:education
+      educationDetails:this.state.educationDetails.concat(education)
     })
   }
-  degreeHandler(ev){
-    const education=this.state.educationDetails
-    education.Degree=ev.target.value;
-    this.setState({
-      educationDetails:education
-    })
-  }
-  durationHandler(ev){
-    const education=this.state.educationDetails
-    education.duration=ev.target.value;
-    this.setState({
-      educationDetails:education
-    })
-  }
-  
  
   render(){
     let mode=null
     if(this.state.editMode){
       mode=<EditMode
+              educationHandler={()=>{this.educationHAndler()}}
               personalDetails={this.state.peronalDetails}
               educationDetails={this.state.educationDetails}
               firstNameHandler={(ev)=>{this.firstNameHandler(ev)}}
@@ -117,9 +141,9 @@ class App extends Component{
               genderHandler={(ev)=>{this.genderHandler(ev)}}
               emailHandler={(ev)=>{this.emailHandler(ev)}}
               descriptionHandler={(ev)=>{this.descriptionHandler(ev)}}
-              schoolHandler={(ev)=>{this.schoolHandler(ev)}}
-              degreeHandler={(ev)=>{this.degreeHandler(ev)}}
-              durationHandler={(ev)=>{this.durationHandler(ev)}}
+              schoolHandler={(ev,id)=>{this.schoolHandler(ev,id)}}
+              degreeHandler={(ev,id)=>{this.degreeHandler(ev,id)}}
+              durationHandler={(ev,id)=>{this.durationHandler(ev,id)}}
           />
     }else{
       mode=<PreviewMode />
