@@ -1,13 +1,23 @@
 function EducationDetails(props){
-    const id=props.educationDetails.id
     return(
         <div>
             <label>School/Intitution name</label>
-            <input value={props.educationDetails.school} onChange={props.schoolHandler}></input><br/>
+            <input 
+                value={props.educationDetails.school} 
+                onChange={props.schoolHandler}
+            />
+            <br/>
             <label>Degree</label>
-            <input value={props.educationDetails.Degree} onChange={props.degreeHandler}></input><br/>
+            <input 
+                value={props.educationDetails.Degree} 
+                onChange={props.degreeHandler}
+            />
+            <br/>
             <label>Duration</label>
-            <input value={props.educationDetails.duration} onChange={props.durationHandler}></input>
+            <input 
+                value={props.educationDetails.duration} 
+                onChange={props.durationHandler}
+            />
         </div>
     )
 

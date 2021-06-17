@@ -1,157 +1,220 @@
-import React,{Component} from 'react';
+import React, { Component } from 'react';
 import EditMode from './components/edit_mode';
 import PreviewMode from './components/preview_mode';
 import uniqid from "uniqid";
 
-class App extends Component{
-  constructor(){
+class App extends Component {
+  constructor() {
     super();
-    this.state={
-      peronalDetails:{
-        firstName:"",
-        secondName:"",
-        phone:"",
-        gender:"",
-        email:"",
-        Description:"",
+    this.state = {
+      peronalDetails: {
+        firstName: "",
+        secondName: "",
+        phone: "",
+        gender: "",
+        email: "",
+        Description: "",
       },
-      educationDetails:[],
-      workExperiance:{
-        company:"",
-        Tile:"",
-        duration:"",
-        EndDate:""
-      },
-      editMode:true
+      educationDetails: [],
+      workExperiance:[],
+      editMode: true
     }
   }
- edit=()=>{
-   this.setState({
-     editMode:true
-   })
-  }
-  preview=()=>{
+  edit = () => {
     this.setState({
-      editMode:false
+      editMode: true
+    })
+  }
+  preview = () => {
+    this.setState({
+      editMode: false
     })
     console.log(this.state.peronalDetails)
     console.log(this.state.educationDetails)
+    console.log(this.state.workExperiance)
   }
-  firstNameHandler(ev){
-    const personal=this.state.peronalDetails;
-    personal.firstName=ev.target.value;
+  firstNameHandler(ev) {
+    const personal = this.state.peronalDetails;
+    personal.firstName = ev.target.value;
     this.setState({
-      peronalDetails:personal
+      peronalDetails: personal
     })
   }
-  secondNameHandler(ev){
-    const personal=this.state.peronalDetails;
-    personal.secondName=ev.target.value;
+  secondNameHandler(ev) {
+    const personal = this.state.peronalDetails;
+    personal.secondName = ev.target.value;
     this.setState({
-      peronalDetails:personal
+      peronalDetails: personal
     })
   }
-  phoneHandler(ev){
-    const personal=this.state.peronalDetails;
-    personal.phone=ev.target.value;
+  phoneHandler(ev) {
+    const personal = this.state.peronalDetails;
+    personal.phone = ev.target.value;
     this.setState({
-      peronalDetails:personal
+      peronalDetails: personal
     })
   }
-  genderHandler(ev){
-    const personal=this.state.peronalDetails;
-    personal.gender=ev.target.value;
+  genderHandler(ev) {
+    const personal = this.state.peronalDetails;
+    personal.gender = ev.target.value;
     this.setState({
-      peronalDetails:personal
+      peronalDetails: personal
     })
   }
-  emailHandler(ev){
-    const personal=this.state.peronalDetails;
-    personal.email=ev.target.value;
+  emailHandler(ev) {
+    const personal = this.state.peronalDetails;
+    personal.email = ev.target.value;
     this.setState({
-      peronalDetails:personal
+      peronalDetails: personal
     })
   }
-  descriptionHandler(ev){
-    const personal=this.state.peronalDetails;
-    personal.Description=ev.target.value;
+  descriptionHandler(ev) {
+    const personal = this.state.peronalDetails;
+    personal.Description = ev.target.value;
     this.setState({
-      peronalDetails:personal
+      peronalDetails: personal
     })
   }
-  schoolHandler(ev,id){
-    let len=this.state.educationDetails.length
-    const education=this.state.educationDetails
-      for(let i=0;i<len;i++){
-        if(education[i].id===id){
-        education[i].school=ev.target.value;
+  schoolHandler(ev, id) {
+    let len = this.state.educationDetails.length
+    const education = this.state.educationDetails
+    for (let i = 0; i < len; i++) {
+      if (education[i].id === id) {
+        education[i].school = ev.target.value;
         this.setState({
-          educationDetails:education
+          educationDetails: education
         })
       }
     }
   }
-  degreeHandler(ev,id){
-    let len=this.state.educationDetails.length
-    const education=this.state.educationDetails
-      for(let i=0;i<len;i++){
-        if(education[i].id===id){
-        education[i].Degree=ev.target.value;
+  degreeHandler(ev, id) {
+    let len = this.state.educationDetails.length
+    const education = this.state.educationDetails
+    for (let i = 0; i < len; i++) {
+      if (education[i].id === id) {
+        education[i].Degree = ev.target.value;
         this.setState({
-          educationDetails:education
+          educationDetails: education
         })
       }
     }
   }
-  durationHandler(ev,id){
-    let len=this.state.educationDetails.length
-    const education=this.state.educationDetails
-      for(let i=0;i<len;i++){
-        if(education[i].id===id){
-        education[i].duration=ev.target.value;
+  durationHandler(ev, id) {
+    let len = this.state.educationDetails.length
+    const education = this.state.educationDetails
+    for (let i = 0; i < len; i++) {
+      if (education[i].id === id) {
+        education[i].duration = ev.target.value;
         this.setState({
-          educationDetails:education
+          educationDetails: education
         })
       }
     }
   }
 
-  educationHAndler(){
-    const education={
-      id:uniqid(),
-      school:"",
-      Degree:"",
-      duration:"",
+  companyHandler(ev, id) {
+    const work = this.state.workExperiance
+    let len = work.length
+    for (let i = 0; i < len; i++) {
+      if (work[i].id === id) {
+        work[i].company = ev.target.value;
+        this.setState({
+          workExperiance: work
+        })
+      }
+    }
+  }
+  titleHandler(ev, id) {
+    const work = this.state.workExperiance
+    let len = work.length
+    for (let i = 0; i < len; i++) {
+      if (work[i].id === id) {
+        work[i].Title = ev.target.value;
+        this.setState({
+          workExperiance: work
+        })
+      }
+    }
+  }
+  companyDurationHandler(ev, id) {
+    const work = this.state.workExperiance
+    let len = work.length
+    for (let i = 0; i < len; i++) {
+      if (work[i].id === id) {
+        work[i].duration = ev.target.value;
+        this.setState({
+          workExperiance: work
+        })
+      }
+    }
+  }
+  endDateHandler(ev, id) {
+    const work = this.state.workExperiance
+    let len = work.length
+    for (let i = 0; i < len; i++) {
+      if (work[i].id === id) {
+        work[i].EndDate = ev.target.value;
+        this.setState({
+          workExperiance: work
+        })
+      }
+    }
+  }
+
+  educationHandler() {
+    const education = {
+      id: uniqid(),
+      school: "",
+      Degree: "",
+      duration: "",
     }
     this.setState({
-      educationDetails:this.state.educationDetails.concat(education)
+      educationDetails: this.state.educationDetails.concat(education)
     })
   }
- 
-  render(){
-    let mode=null
-    if(this.state.editMode){
-      mode=<EditMode
-              educationHandler={()=>{this.educationHAndler()}}
-              personalDetails={this.state.peronalDetails}
-              educationDetails={this.state.educationDetails}
-              firstNameHandler={(ev)=>{this.firstNameHandler(ev)}}
-              secondNameHandler={(ev)=>{this.secondNameHandler(ev)}}
-              phoneHandler={(ev)=>{this.phoneHandler(ev)}}
-              genderHandler={(ev)=>{this.genderHandler(ev)}}
-              emailHandler={(ev)=>{this.emailHandler(ev)}}
-              descriptionHandler={(ev)=>{this.descriptionHandler(ev)}}
-              schoolHandler={(ev,id)=>{this.schoolHandler(ev,id)}}
-              degreeHandler={(ev,id)=>{this.degreeHandler(ev,id)}}
-              durationHandler={(ev,id)=>{this.durationHandler(ev,id)}}
-          />
-    }else{
-      mode=<PreviewMode />
+  workHandler(){
+    const work={
+        id:uniqid(),
+        company: "",
+        Title: "",
+        duration: "",
+        EndDate: ""
     }
-    return(
+    this.setState({
+      workExperiance:this.state.workExperiance.concat(work)
+    })
+  }
+
+  render() {
+    let mode = null
+    if (this.state.editMode) {
+      mode = <EditMode
+        educationHandler={() => { this.educationHandler() }}
+        workHandler={()=>{this.workHandler()}}
+        personalDetails={this.state.peronalDetails}
+        educationDetails={this.state.educationDetails}
+        workExperiance={this.state.workExperiance}
+        firstNameHandler={(ev) => { this.firstNameHandler(ev) }}
+        secondNameHandler={(ev) => { this.secondNameHandler(ev) }}
+        phoneHandler={(ev) => { this.phoneHandler(ev) }}
+        genderHandler={(ev) => { this.genderHandler(ev) }}
+        emailHandler={(ev) => { this.emailHandler(ev) }}
+        descriptionHandler={(ev) => { this.descriptionHandler(ev) }}
+        schoolHandler={(ev, id) => { this.schoolHandler(ev, id) }}
+        degreeHandler={(ev, id) => { this.degreeHandler(ev, id) }}
+        durationHandler={(ev, id) => { this.durationHandler(ev, id) }}
+        companyHandler={(ev,id)=>{this.companyHandler(ev,id)}}
+        titleHandler={(ev,id)=>{this.titleHandler(ev,id)}}
+        companyDurationHandler={(ev,id)=>{this.companyDurationHandler(ev,id)}}
+        endDateHandler={(ev,id)=>{this.endDateHandler(ev,id)}}
+      />
+    } else {
+      mode = <PreviewMode />
+    }
+    return (
       <div>
-      <button onClick={this.edit}>Edit</button>
-      <button onClick={this.preview}>preview</button>
+        <button onClick={this.edit}>Edit</button>
+        <button onClick={this.preview}>preview</button>
         <div>{mode}</div>
       </div>
     )
