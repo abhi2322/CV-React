@@ -1,0 +1,21 @@
+.personalDetails{
+    display: flex;
+    flex-direction: column;
+    height:400px;
+    justify-content: space-between;
+}
+.personalHeader{
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.personalDetails input{
+    margin: 10px;
+}
+
+.personalDetails textarea{
+    margin: 10px;
+    height: 50px;
+}
+

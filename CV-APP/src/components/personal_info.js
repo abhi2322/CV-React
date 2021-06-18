@@ -1,36 +1,36 @@
+import "../styles/personal_details.css"
+
 function PersonalInfo(props){
 return(
-    <div>
-        <label>Name:</label>
+    <div className="personalDetails">
+        <div className='personalHeader'>Personal Details</div>
         <input 
+            placeholder='First Name'
             onChange={props.firstNameHandler} 
             value={props.personalDetails.firstName}
         />
         <input 
+            placeholder='Second Name'
             onChange={props.secondNameHandler} 
             value={props.personalDetails.secondName}
         />
-        <br/>
-        <label>Phone:</label>
         <input 
+            placeholder='Phone'
             onChange={props.phoneHandler} 
             value={props.personalDetails.phone}
         />
-        <br/>
-        <label>Gender:</label>
         <input 
+            placeholder='Gender'
             onChange={props.genderHandler} 
             value={props.personalDetails.gender}
         />
-        <br/>
-        <label>Email:</label>
         <input 
+            placeholder='Email Address'
             onChange={props.emailHandler} 
             value={props.personalDetails.email}
         />
-        <br/>
-        <label>Description:</label>
-        <input 
+        <textarea
+            placeholder='Description'
             onChange={props.descriptionHandler} 
             value={props.personalDetails.Description}
         />

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import EditMode from './components/edit_mode';
 import PreviewMode from './components/preview_mode';
 import uniqid from "uniqid";
+import './styles/app.css'
 
 class App extends Component {
   constructor() {
@@ -160,7 +161,6 @@ class App extends Component {
       }
     }
   }
-
   educationHandler() {
     const education = {
       id: uniqid(),
@@ -188,33 +188,35 @@ class App extends Component {
   render() {
     let mode = null
     if (this.state.editMode) {
-      mode = <EditMode
-        educationHandler={() => { this.educationHandler() }}
-        workHandler={()=>{this.workHandler()}}
-        personalDetails={this.state.peronalDetails}
-        educationDetails={this.state.educationDetails}
-        workExperiance={this.state.workExperiance}
-        firstNameHandler={(ev) => { this.firstNameHandler(ev) }}
-        secondNameHandler={(ev) => { this.secondNameHandler(ev) }}
-        phoneHandler={(ev) => { this.phoneHandler(ev) }}
-        genderHandler={(ev) => { this.genderHandler(ev) }}
-        emailHandler={(ev) => { this.emailHandler(ev) }}
-        descriptionHandler={(ev) => { this.descriptionHandler(ev) }}
-        schoolHandler={(ev, id) => { this.schoolHandler(ev, id) }}
-        degreeHandler={(ev, id) => { this.degreeHandler(ev, id) }}
-        durationHandler={(ev, id) => { this.durationHandler(ev, id) }}
-        companyHandler={(ev,id)=>{this.companyHandler(ev,id)}}
-        titleHandler={(ev,id)=>{this.titleHandler(ev,id)}}
-        companyDurationHandler={(ev,id)=>{this.companyDurationHandler(ev,id)}}
-        endDateHandler={(ev,id)=>{this.endDateHandler(ev,id)}}
-      />
-    } else {
+        mode = <EditMode
+                  personalDetails={this.state.peronalDetails}
+                  educationDetails={this.state.educationDetails}
+                  workExperiance={this.state.workExperiance}
+                  educationHandler={()=>{this.educationHandler()}}
+                  workHandler={()=>{this.workHandler()}}
+                  firstNameHandler={(ev)=>{this.firstNameHandler(ev)}}
+                  secondNameHandler={(ev)=>{this.secondNameHandler(ev)}}
+                  phoneHandler={(ev)=>{this.phoneHandler(ev)}}
+                  genderHandler={(ev)=>{this.genderHandler(ev)}}
+                  emailHandler={(ev)=>{this.emailHandler(ev)}}
+                  descriptionHandler={(ev)=>{this.descriptionHandler(ev)}}
+                  schoolHandler={(ev,id)=>{this.schoolHandler(ev,id)}}
+                  degreeHandler={(ev,id)=>{this.degreeHandler(ev,id)}}
+                  durationHandler={(ev,id)=>{this.durationHandler(ev,id)}}
+                  companyHandler={(ev,id)=>{this.companyHandler(ev,id)}}
+                  titleHandler={(ev,id)=>{this.titleHandler(ev,id)}}
+                  companyDurationHandler={(ev,id)=>{this.companyDurationHandler(ev,id)}}
+                  endDateHandler={(ev,id)=>{this.endDateHandler(ev,id)}}
+               />
+    } 
+    else 
+    {
       mode = <PreviewMode />
     }
     return (
-      <div>
-        <button onClick={this.edit}>Edit</button>
-        <button onClick={this.preview}>preview</button>
+      <div className="cvContainer">
+        <button onClick={this.edit} className='btnEdit'>Edit Mode</button>
+        <button onClick={this.preview} className='btnPreview'>Preview Mode</button>
         <div>{mode}</div>
       </div>
     )
