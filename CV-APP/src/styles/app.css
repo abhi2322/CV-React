@@ -1,11 +1,17 @@
 .cvContainer{
-background-color: azure;
+background-color:white;
 width: 60vw;
 margin-left:20vw;
 border:4px solid rgb(19, 186, 216);
 border-radius: 15px;
 padding: 7px;
-height: 1000px;
+}
+
+body{
+    top:0;
+    background-color:#4dd0e1;
+    background-image: url(https://static-cse.canva.com/_next/static/assets/wave.2881x801.e3004027281d91aea8440556fa84fbfd.png);
+    background-repeat: no-repeat;
 }
 
 .cvContainer button{
@@ -24,7 +30,7 @@ height: 1000px;
 
 .btnEdit{
     margin-left:36%;
-    margin-right: 5px;
+    margin-right: 15px;
     background-color:rgb(19, 186, 216);
     color:aliceblue;
     
