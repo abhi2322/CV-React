@@ -4,8 +4,10 @@ import App from './App';
 import './styles/heading.css'
 ReactDOM.render(
   <React.StrictMode>
+    <div className="backGround">
     <h1 className='heading'>CV GENERATOR</h1>
     <App />
+    </div>
   </React.StrictMode>,
   document.getElementById('root')
 );

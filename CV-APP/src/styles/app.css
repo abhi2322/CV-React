@@ -7,11 +7,14 @@ border-radius: 15px;
 padding: 7px;
 }
 
-body{
+.backGround{
     top:0;
+    z-index: -1;
     background-color:#4dd0e1;
     background-image: url(https://static-cse.canva.com/_next/static/assets/wave.2881x801.e3004027281d91aea8440556fa84fbfd.png);
     background-repeat: no-repeat;
+    background-position: top;
+    height: 800px;
 }
 
 .cvContainer button{
