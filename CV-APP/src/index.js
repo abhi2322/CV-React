@@ -5,7 +5,7 @@ import './styles/heading.css'
 ReactDOM.render(
   <React.StrictMode>
     <div className="backGround">
-    <h1 className='heading'>CV GENERATOR</h1>
+    <div className='heading'>CV GENERATOR</div>
     <App />
     </div>
   </React.StrictMode>,

@@ -15,6 +15,8 @@ class App extends Component {
         gender: "",
         email: "",
         Description: "",
+        linkedin:"",
+        twitter:"",
       },
       educationDetails: [],
       workExperiance:[],
@@ -30,9 +32,6 @@ class App extends Component {
     this.setState({
       editMode: false
     })
-    console.log(this.state.peronalDetails)
-    console.log(this.state.educationDetails)
-    console.log(this.state.workExperiance)
   }
   firstNameHandler(ev) {
     const personal = this.state.peronalDetails;
@@ -76,6 +75,21 @@ class App extends Component {
       peronalDetails: personal
     })
   }
+  linkedinHandler(ev) {
+    const personal = this.state.peronalDetails;
+    personal.linkedin = ev.target.value;
+    this.setState({
+      peronalDetails: personal
+    })
+  }
+  twitterHandler(ev) {
+    const personal = this.state.peronalDetails;
+    personal.twitter = ev.target.value;
+    this.setState({
+      peronalDetails: personal
+    })
+  }
+ 
   schoolHandler(ev, id) {
     let len = this.state.educationDetails.length
     const education = this.state.educationDetails
@@ -100,12 +114,24 @@ class App extends Component {
       }
     }
   }
-  durationHandler(ev, id) {
+  schoolStartHandler(ev, id) {
     let len = this.state.educationDetails.length
     const education = this.state.educationDetails
     for (let i = 0; i < len; i++) {
       if (education[i].id === id) {
-        education[i].duration = ev.target.value;
+        education[i].StartDate = ev.target.value;
+        this.setState({
+          educationDetails: education
+        })
+      }
+    }
+  }
+   schoolEndHandler(ev, id) {
+    let len = this.state.educationDetails.length
+    const education = this.state.educationDetails
+    for (let i = 0; i < len; i++) {
+      if (education[i].id === id) {
+        education[i].EndDate= ev.target.value;
         this.setState({
           educationDetails: education
         })
@@ -137,12 +163,12 @@ class App extends Component {
       }
     }
   }
-  companyDurationHandler(ev, id) {
+  companyStartHandler(ev, id) {
     const work = this.state.workExperiance
     let len = work.length
     for (let i = 0; i < len; i++) {
       if (work[i].id === id) {
-        work[i].duration = ev.target.value;
+        work[i].StartDate = ev.target.value;
         this.setState({
           workExperiance: work
         })
@@ -166,7 +192,8 @@ class App extends Component {
       id: uniqid(),
       school: "",
       Degree: "",
-      duration: "",
+      StartDate: "",
+      EndDate: "",
     }
     this.setState({
       educationDetails: this.state.educationDetails.concat(education)
@@ -177,7 +204,7 @@ class App extends Component {
         id:uniqid(),
         company: "",
         Title: "",
-        duration: "",
+        StartDate: "",
         EndDate: ""
     }
     this.setState({
@@ -200,18 +227,25 @@ class App extends Component {
                   genderHandler={(ev)=>{this.genderHandler(ev)}}
                   emailHandler={(ev)=>{this.emailHandler(ev)}}
                   descriptionHandler={(ev)=>{this.descriptionHandler(ev)}}
+                  linkedinHandler={(ev)=>{this.linkedinHandler(ev)}}
+                  twitterHandler={(ev)=>{this.twitterHandler(ev)}}
                   schoolHandler={(ev,id)=>{this.schoolHandler(ev,id)}}
                   degreeHandler={(ev,id)=>{this.degreeHandler(ev,id)}}
-                  durationHandler={(ev,id)=>{this.durationHandler(ev,id)}}
+                  schoolStartHandler={(ev,id)=>{this.schoolStartHandler(ev,id)}}
+                  schoolEndHandler={(ev,id)=>{this.schoolEndHandler(ev,id)}}
                   companyHandler={(ev,id)=>{this.companyHandler(ev,id)}}
                   titleHandler={(ev,id)=>{this.titleHandler(ev,id)}}
-                  companyDurationHandler={(ev,id)=>{this.companyDurationHandler(ev,id)}}
+                  companyStartHandler={(ev,id)=>{this.companyStartHandler(ev,id)}}
                   endDateHandler={(ev,id)=>{this.endDateHandler(ev,id)}}
                />
     } 
     else 
     {
-      mode = <PreviewMode />
+      mode =<PreviewMode
+                personalDetails={this.state.peronalDetails}
+                educationDetails={this.state.educationDetails}
+                workExperiance={this.state.workExperiance}
+            />
     }
     return (
       <div className="cvContainer">

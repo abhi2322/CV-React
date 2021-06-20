@@ -1,7 +1,7 @@
 .personalDetails{
     display: flex;
     flex-direction: column;
-    height:400px;
+    height:500px;
     justify-content: space-between;
 }
 .personalHeader{
@@ -11,17 +11,9 @@
     margin-left: 10px;
 }
 
-.personalDetails input{
-    border-color:black;
-    border-width:0px 0px 2px 0px;
-    background: transparent;
-    margin: 10px;
-    outline: none;
-    height: 40px
-}
 
-.personalDetails textarea{
+textarea{
     margin: 10px;
-    height: 50px;
+    height: 80px;
+    font-size: 1em;
 }
-

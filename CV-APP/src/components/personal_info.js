@@ -29,6 +29,16 @@ return(
             onChange={props.emailHandler} 
             value={props.personalDetails.email}
         />
+        <input 
+            placeholder='Linkedin Profile'
+            onChange={props.linkedinHandler} 
+            value={props.personalDetails.linkedin}
+        />
+        <input 
+            placeholder='Twitter profile'
+            onChange={props.twitterHandler} 
+            value={props.personalDetails.twitter}
+        />
         <textarea
             placeholder='Description'
             onChange={props.descriptionHandler} 

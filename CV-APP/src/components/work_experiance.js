@@ -1,25 +1,26 @@
+import "../styles/work_experiance.css"
+
 function WorkExperianceComponent(props){
     return(
-        <div>
-            <label>Company</label>
+        <div className="workExperiance">
+            <h4>Work Experiance {props.counter}</h4>
             <input 
+                placeholder="Company"
                 value={props.workExperiance.company} 
                 onChange={props.companyHandler}
             />
-            <br/>
-            <label>Title</label>
             <input
+                placeholder="Title"
                 value={props.workExperiance.Title}
                 onChange={props.titleHandler}
             />
-            <br/>
-            <label>Duration</label>
             <input 
-                value={props.workExperiance.duration}
-                onChange={props.companyDurationHandler} 
+                placeholder="Start Date"
+                value={props.workExperiance.StartDate}
+                onChange={props.companyStartHandler} 
             />
-            <label>End Date</label>
             <input
+                placeholder="End Date"
                 value={props.workExperiance.EndDate}
                 onChange={props.endDateHandler}
             />

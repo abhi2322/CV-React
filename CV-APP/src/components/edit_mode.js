@@ -16,33 +16,38 @@ class EditMode extends Component{
             genderHandler={(ev)=>{this.props.genderHandler(ev)}}
             emailHandler={(ev)=>{this.props.emailHandler(ev)}}
             descriptionHandler={(ev)=>{this.props.descriptionHandler(ev)}}
+            linkedinHandler={(ev)=>{this.props.linkedinHandler(ev)}}
+            twitterHandler={(ev)=>{this.props.twitterHandler(ev)}}
         />
         <h4>Education Details</h4>
         <button onClick={this.props.educationHandler}>ADD</button>
-        {this.props.educationDetails.map((items)=>{
+        {this.props.educationDetails.map((items,step)=>{
             const id=items.id
             return(
                 <EducationDetails 
                     key={id}
+                    counter={step+1}
                     educationDetails={items}
                     schoolHandler={(ev)=>{this.props.schoolHandler(ev,id)}}
                     degreeHandler={(ev)=>{this.props.degreeHandler(ev,id)}}
-                    durationHandler={(ev)=>{this.props.durationHandler(ev,id)}}
+                    schoolStartHandler={(ev)=>{this.props.schoolStartHandler(ev,id)}}
+                    schoolEndHandler={(ev)=>{this.props.schoolEndHandler(ev,id)}}
                 />
             )
         })}
         <h4>Work Experiance</h4>
         <button onClick={this.props.workHandler}>ADD</button>
-        {
-            this.props.workExperiance.map((work)=>{
+        {   
+            this.props.workExperiance.map((work,step)=>{
                 const id=work.id
                 return(
                     <WorkExperianceComponent
+                        counter={step+1}
                         key={id}
                         workExperiance={work}
                         companyHandler={(ev)=>{this.props.companyHandler(ev,id)}}
                         titleHandler={(ev)=>{this.props.titleHandler(ev,id)}}
-                        companyDurationHandler={(ev)=>{this.props.companyDurationHandler(ev,id)}}
+                        companyStartHandler={(ev)=>{this.props.companyStartHandler(ev,id)}}
                         endDateHandler={(ev)=>{this.props.endDateHandler(ev,id)}}
                     />
                 )
